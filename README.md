@@ -92,4 +92,4 @@ Then run it by typing this command in the terminal:
 $ node app.js
 ```
 
-Which should output `> Eric Stermer` because the function we created was an IIFE (immediately invoked function expression).
+Which should output `Eric Stermer` because the function we created was an IIFE (immediately invoked function expression).

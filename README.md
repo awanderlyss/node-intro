@@ -31,7 +31,7 @@ Just like Ruby has Rails and Sinatra, JavaScript has Node.
 
 Just like in Rails and Sinatra, we will be running servers, create RESTful routing, interact with a database, including external code packages, and using a MVC design patterns.
 
-## I do - Node in the Terminal.
+## I DO - Node in the Terminal.
 
 ***Just watch me for now***
 

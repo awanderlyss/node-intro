@@ -10,7 +10,7 @@ By the end of this, developers should be able to:
 -   Vizualize the difference between Node and other backend environments, such as Sinatra.
 -   Set up a basic server
 -   Create a GET request with vanilla Node.
--   Install and include node modules using ES6 and ES5
+-   Install and include node modules
 
 
 ## What is Node?
@@ -22,6 +22,8 @@ Most server-side environments will enter something called an event loop. But in 
 ***For example:***
 
 Say I am using a home budget web application, I have a lot of transactions that I have to load up, so while I am waiting for the server to respond to list all those transactions, I can use a server-side calculator to calculate my taxes for the year on the same page.
+
+If some of this language is unfamiliar, there is a full article on [Blocking vs Non-Blocking](https://github.com/nodejs/node/blob/master/doc/topics/blocking-vs-non-blocking.md).
 
 Simply put, Node is an asychronous server-side environment to write API and server-side web applications.
 
@@ -93,3 +95,96 @@ $ node app.js
 ```
 
 Which should output `Eric Stermer` because the function we created was an IIFE (immediately invoked function expression).
+
+## YOU DO - Play Around With Node REPL (5 Mins)
+
+## Break (10 mins)
+
+## Build A Server - 'Hello World'
+
+Now that we have some experience running Node on our machine, lets start up our first web server using Node.
+
+To get started we need to require the `http` interface which provides the ability to create our server and RESTful routing.
+
+```js
+const http = require('http');
+```
+
+Then lets define the local host name and the port number we want the server to run on.
+
+```js
+const hostname = '127.0.0.1'; // this is our localhost
+const port = 3000;
+```
+
+Now that we have `http` added to our file, we can create our server with a method available to us through `http`.
+
+This method call `createServer` takes in one argument which is function callback whose parameters are the servers `request` and the servers `response` which we will shorten up to `req` and `res`.
+
+```js
+const server = http.createServer((req, res) => {
+
+});
+```
+
+`request` is an object that contains the information that is coming in as a string.
+`response` is an object that contains methods for what you want to do with the data once you have it and are done with it.
+
+So when our server is first pinged, lets give it some information back using our `response` object.
+
+```js
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+```
+
+With the code above we are sending a status code of `200` meaning everything is good. Also we set the implicit header type to `text/plain` which is the kind of content that we will receive from requests unless otherwise specified. And lastly, with the `end` method we tell the route that we are done and to send something to the client, in this case we are just sending text to be rendered saying `Hello World`.
+
+The last thing we need to get our server to work, is we need our server to enter the event loop and to listen on the path that contains the hostname and port number.
+
+```js
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+
+You will notice a `console.log` in the callback function. This will output to our console/terminal for us to confirm that our server is infact working. It is only visual organization and not required.
+
+We are done creating our server, now we can run it.
+
+Like we said before, we run js files with node using the `node` command in our terminal. So lets to that:
+
+```bash
+$ node server.js
+```
+
+which should get us something like this:
+
+```bash
+~ $ node server.js 
+Server running at http://127.0.0.1:3000/
+```
+
+If we copy and paste the path we see in our terminal where our server is listening on and paste it to our address bar in chrome we should see `Hello World` displayed.
+
+Now if we wanted to show `I Like Pizza` underneath our `Hello World` in the browser we could simple add it to our `res.end()` methodlike this:
+
+```js
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n I Like Pizza');
+});
+```
+
+Which will now show that `I Like Pizza` bellow the `Hello World`.
+
+***OOPS***
+
+When we refreshed our page it doesn't show that we like pizza yet. Why is that? This is because we need to refresh our browser once we have saved changes to our server file. 
+
+So go ahead and `ctrl + c` to cancel our server and rerun the command `node server.js`.
+
+Now if we refresh the browser we will see that `I Like Pizza` is now showing.

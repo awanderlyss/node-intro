@@ -48,7 +48,7 @@ $ node
 Which should look similar to our `rails c` or ` irb` environments from ruby. You should see something like this:
 
 ```bash
-~ (master)$ node
+~ $ node
 > 
 ```
 
@@ -57,7 +57,7 @@ From here we should be able to type out plain JavaScript.
 We can type out operators, set variables, creation functions, call functions, etc.
 
 ```bash
-~ (master)$ node
+~ $ node
 > 1+1
 2
 > var name = "Eric"

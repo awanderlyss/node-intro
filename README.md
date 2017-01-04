@@ -188,3 +188,21 @@ When we refreshed our page it doesn't show that we like pizza yet. Why is that? 
 So go ahead and `ctrl + c` to cancel our server and rerun the command `node server.js`.
 
 Now if we refresh the browser we will see that `I Like Pizza` is now showing.
+
+***Now That Is Annoying***
+
+Having to restart your server after every saved change is not fun. So like `sintra/reloader` for Sinatra to help automatically reload the server when changes are saved, Node has something called `nodemon` which is a node package that does the same thing.
+
+To download it run the command:
+
+```bash
+$ npm install nodemon -g
+```
+
+This will globally install nodemon to your computer allowing you to use it on any project without having to redownload it.
+
+Then to run our server you just run:
+
+```bash
+$ nodemon server.js
+```

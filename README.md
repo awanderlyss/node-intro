@@ -228,7 +228,8 @@ In this case I am goind to use a random number website [www.random.org](www.rand
 ```js
 let options = {
    host: 'www.random.org',
-   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new',
+   method: 'GET'
 };
 
 let callback = (response) => {
@@ -292,7 +293,8 @@ So our entire 'GET' request should look like this:
 // Options is an object to include information regardnig the 5 W's of the data we want
 let options = {
    host: 'www.random.org',
-   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new',
+   method: 'GET'
 };
 
 // The callback function allows us to gather and manipulate the data we receive

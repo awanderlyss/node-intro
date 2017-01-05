@@ -223,13 +223,13 @@ var request = http.request();
 
 HTTP requests takes in two arguements, an [options](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_http_request_options_callback) object that contains information about the source of your data such as the path and host, and a callback function where we will manipulate the data when it is received.
 
-In this case I am goind to use a random number website [www.random.org](www.random.org) to get some dummy data for this example.
+In this case I am going to use a starwars search  website [www.swapi.co](www.swapi.co) to get get information about Luke Skywalker.
 
 ```js
 let options = {
-   host: 'www.random.org',
-   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new',
-   method: 'GET'
+  method: "GET",
+  hostname: "swapi.co",
+  path: "/api/people/1/",
 };
 
 let callback = (response) => {
@@ -239,7 +239,7 @@ let callback = (response) => {
 let request = http.request(options, callback);
 ```
 
-Now, when we recieve data over the server, it does not come in one complete chuck of data. Information received comes through in bits and pieces.
+Now, when we recieve data over the server, it does not come in one complete chunk of data. Information received comes through in bits and pieces.
 
 So in our callback function, there is a method in our response that is somewhat like an event listener that we have seen in JavaScript DOM manipulation. 
 
@@ -292,9 +292,9 @@ So our entire 'GET' request should look like this:
 ```js
 // Options is an object to include information regardnig the 5 W's of the data we want
 let options = {
-   host: 'www.random.org',
-   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new',
-   method: 'GET'
+  method: "GET",
+  hostname: "swapi.co",
+  path: "/api/people/1/",
 };
 
 // The callback function allows us to gather and manipulate the data we receive

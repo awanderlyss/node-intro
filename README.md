@@ -98,7 +98,7 @@ Which should output `Eric Stermer` because the function we created was an IIFE (
 
 ## YOU DO - Play Around With Node REPL (5 Mins)
 
-## Break (10 mins)
+### Break (10 mins)
 
 ## Build A Server - 'Hello World'
 
@@ -206,3 +206,38 @@ Then to run our server you just run:
 ```bash
 $ nodemon server.js
 ```
+
+### Break (5 mins)
+
+## REST For Node
+
+Just like any other server, Node uses the RESTful routing convention to speak to clients and other servers. The most common of these is the 'GET' method, which is simply a method to read data from a source.
+
+Our RESTful methods in Node are a property of `http`.
+
+So to write a 'GET' method, we will create an instance of our request with a variable, setting it to the `http.request()`.
+
+```js
+var request = http.request();
+```
+
+HTTP requests takes in two arguements, an [options](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_http_request_options_callback) object that contains information about the source of your data such as the path and host, and a callback function where we will manipulate the data when it is received.
+
+In this case I am goind to use a random number website [www.random.org](www.random.org) to get some dummy data for this example.
+
+```js
+let options = {
+   host: 'www.random.org',
+   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+};
+
+let callback = (response) => {
+  //response is the parameter where we will recieve the data
+};
+
+let request = http.request(options, callback);
+```
+
+
+
+

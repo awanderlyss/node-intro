@@ -238,6 +238,81 @@ let callback = (response) => {
 let request = http.request(options, callback);
 ```
 
+Now, when we recieve data over the server, it does not come in one complete chuck of data. Information received comes through in bits and pieces.
 
+So in our callback function, there is a method in our response that is somewhat like an event listener that we have seen in JavaScript DOM manipulation. 
 
+We use the `on` method to listen for `data` and concatenate the data into a single string. Remember also that data is sent through the internet as strings and is the only way data can be sent and received.
 
+So, in our callback lets create a variable first that will represent our data and set it to an empty string:
+
+```js
+let callback = (response) => {
+  let data = "";
+};
+```
+
+Then lets use `response.on()` to listen for `data` and pass a callback function that adds the chuck of data to our data variable.
+
+```js
+let callback = (response) => {
+  let data = "";
+  
+  response.on('data', (chunk) => {
+    data += chunk;
+  });
+};
+```
+
+Now everytime a peice of data is received by our request method, it will add the piece to the whole. 
+
+Once this process is complete, we have to manually tell out request method what to do onces all the information is received. In this case we just want to log the data to our terminal/console. We do this with another event listener that listens for when all the data is received, allowing us to fire a callback which is where we will `console.log` our data.
+
+```js
+let callback = (response) => {
+  let data = "";
+  
+  response.on('data', (chunk) => {
+    data += chunk;
+  });
+  
+  response.on('end', () => {
+    console.log(data);
+  });
+};
+```
+
+We are not quite done with our request.
+
+One last thing we need to do is stop our request from asking for information from the source manually. This is done with another `http` method called `end`. 
+
+So our entire 'GET' request should look like this:
+
+```js
+// Options is an object to include information regardnig the 5 W's of the data we want
+let options = {
+   host: 'www.random.org',
+   path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+};
+
+// the callback function allows us to gather and manipulate the data we receive
+let callback = (response) => {
+  let data = "";
+  
+  // Data comes in pieces so we listen for those pieces and add them together
+  response.on('data', (chunk) => {
+    data += chunk;
+  });
+  
+  // The response listens for when the all the data comes through to then do something with the data
+  response.on('end', () => {
+    console.log(data);
+  });
+};
+
+// This variable opens up the request 
+let request = http.request(options, callback);
+
+// This end method closes the request
+request.end();
+```

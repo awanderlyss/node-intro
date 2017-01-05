@@ -295,7 +295,7 @@ let options = {
    path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
 };
 
-// the callback function allows us to gather and manipulate the data we receive
+// The callback function allows us to gather and manipulate the data we receive
 let callback = (response) => {
   let data = "";
   

@@ -47,8 +47,7 @@ This is different from a Web Framework because it does not have the full functio
 
 Ultimately, Node is simply JavaScript. This aspect of node breaks down the barrier between frontend web developers and backend developers. People who are familiar with just JavaScript can learn to write server side code easier which creates greater continuity from front to the back, meaning greater productivity.
 
-***For example***
-
+For example:
 PayPal measured a 2x increase in developer productivity, where it took half the number of developers to deliver an application when compared to Java, and it was delivered in less time.
 
 #### Performance due to asynchronousity

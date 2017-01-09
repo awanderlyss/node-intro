@@ -6,16 +6,18 @@
 
 By the end of this, developers should be able to:
 
--   Understand what is Node.JS
--   Vizualize the difference between Node and other backend environments, such as Sinatra.
--   Set up a basic server
+-   Understand what is Node.JS and why we would build apps in Node.
+-   Recognize the benefits of writing web applications using Node.
+-   Compare and contrast JavaScript in the client to JavaScript in Node.
+-   Compare and contrast the Node library and web frameworks such as RoR and Sinatra.
+-   Navigate the Node REPL and deploy simple node apps.
+-   Set up a basic web server.
 -   Create a GET request with vanilla Node.
--   Install and include node modules
 
 
 ## What is Node?
 
-Node is a JavaScript runtime environment that is event driven and uses a non-blocking input/output model.
+Node is a JavaScript runtime environment built with Chrome's V8 engine that is event driven and uses a non-blocking input/output model. It is available as an open source library, and designed to build scalable network apps, chosen for it's ability to create parallel applications.
 
 Most server-side environments will enter something called an event loop. But in most cases, when an event is triggered, the code will not move on to any other event until the first one has been completed. This is where the non-blocking feature of node comes in handy. Node will set aside the event if it is not done, allowing other events to be triggered. When the event is complete it will fire the code right away.
 
@@ -33,13 +35,41 @@ Just like Ruby has Rails and Sinatra, JavaScript has Node.
 
 Just like in Rails and Sinatra, we will be running servers, create RESTful routing, interact with a database, including external code packages, and using a MVC design patterns.
 
+Though Node is used to write powerful web server applications, it is not a framework like Rails or Sinatra. It is more comparable to Ruby in that it is an interpreted language on your local machine.
+
+If you remember, JavaScript was only written in the Client. Now with Node, we can write JavaScript on our local machine.
+
+This is different from a Web Framework because it does not have the full functionality of creating models, generating partial views, and seperating out concerns with routing. Node does have a framework written for it called 'Express' which we will get into after this lesson.
+
+## Why use Node over other backend languages?
+
+#### Node is JavaScript
+
+Ultimately, Node is simply JavaScript. This aspect of node breaks down the barrier between frontend web developers and backend developers. People who are familiar with just JavaScript can learn to write server side code easier which creates greater continuity from front to the back, meaning greater productivity.
+
+***For example***
+
+PayPal measured a 2x increase in developer productivity, where it took half the number of developers to deliver an application when compared to Java, and it was delivered in less time.
+
+#### Performance due to asynchronousity
+
+Because of the non-blocking nature of Node, it can handle multiple requests at the same time.
+
+Walmart took advantage of this and switch over to running their mobile traffic through Node.js in 2013 for Black Friday.
+
+For such a busy day of the year to process orders online, Walmart's servers didn’t go over 1% CPU utilisation and the team did a deploy with 200,000,000 users online.
+
+#### Adaptability and Easy Maintenance
+
+Unlike Ruby on Rails, servers written in Node are not so opinionated in their development. This makes for greater adaptability. Incase the application is not designed for a specific purpose, it can be mutable.
+
 ## I DO - Node in the Terminal.
 
 ***Just watch me for now***
 
-Another thing Node can be used for is a REPL for JavaScript in the terminal.
+Since Node is a runtime environment for JavaScript on your local machine, it has a REPL environment.
 
-If you remember when we learned JavaScript, we would use our console in Chrome in order to test our code. We can do the same with Node in our terminal.
+If you remember when we learned JavaScript initially, we would use our console in Chrome in order to test our code. We can do the same with Node in our terminal.
 
 We can launch the REPL environment by simple trying in the command:
 
@@ -78,7 +108,9 @@ undefined
 
 *Note - where you see the undefined here, this would be a returned value from a function.
 
-If I have a JavaScript file, I can run it in the terminal as well.
+With Node you have access to a lot of the built in methods you saw using JavaScript in the client. Instead of being inherited from the `Window` object like we see in the client, they inherit from the `Global` object. Other than that, there is very few differences between Node and the Client.
+
+Next, if I have a JavaScript file, I can run it in the terminal as well.
 
 I am going to create a new JavaScript file called `app.js` and add the function below:
 
@@ -318,3 +350,26 @@ let request = http.request(options, callback);
 // This end method closes the request
 request.end();
 ```
+
+Checking our server we should see this:
+
+```bash
+Here is information about Luke: {"name":"Luke Skywalker","height":"172","mass":"77","hair_color":"blond","skin_color":"fair","eye_color":"blue","birth_year":"19BBY","gender":"male","homeworld":"http://swapi.co/api/planets/1/","films":["http://swapi.co/api/films/6/","http://swapi.co/api/films/3/","http://swapi.co/api/films/2/","http://swapi.co/api/films/1/","http://swapi.co/api/films/7/"],"species":["http://swapi.co/api/species/1/"],"vehicles":["http://swapi.co/api/vehicles/14/","http://swapi.co/api/vehicles/30/"],"starships":["http://swapi.co/api/starships/12/","http://swapi.co/api/starships/22/"],"created":"2014-12-09T13:50:51.644000Z","edited":"2014-12-20T21:17:56.891000Z","url":"http://swapi.co/api/people/1/"}
+```
+
+## Summary
+
+Node is chosen for it's asynchronous capabilities. Because of this, companies like Walmart were able to handle huge numbers in traffic to their online shopping application without risking speed!
+
+Vanilla Node is rarely used on its own. This lesson was simply to introduce to using JavaScript as a web server language.
+
+We will cover a web framework called 'Express' which is used on top of Node to make life easier when it comes to writing a web server in JavaScript.
+
+Some summary questions:
+
+- What language does Node interpret?
+- If Node a Framework or a Library?
+- On what engine is Node built on?
+- Name 3 reasons why we would use Node rather than another Server side language?
+
+
